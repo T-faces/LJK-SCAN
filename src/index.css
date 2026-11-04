@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-canvas font-sans text-ink-900 antialiased; }
+  :focus-visible { @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-white; }
+  @media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+}
+
+@layer components {
+  .card { @apply rounded-3xl bg-white shadow-card; }
+  .input { @apply h-11 w-full rounded-xl border border-ink-100 bg-white px-3.5 text-sm text-ink-900 placeholder:text-ink-900/40 transition focus:border-primary disabled:cursor-not-allowed disabled:bg-canvas; }
+  .label { @apply mb-1.5 block text-xs font-semibold text-ink-900/70; }
+}
+
+/* Halaman cetak LJK */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  html, body { background: #fff !important; }
+  .no-print { display: none !important; }
+  .sheet { box-shadow: none !important; margin: 0 !important; break-after: page; page-break-after: always; }
+  .sheet:last-child { break-after: auto; page-break-after: auto; }
+}
